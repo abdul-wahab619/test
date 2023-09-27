@@ -1,0 +1,18 @@
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create Comment' %>
+  </div>
+<% end %>

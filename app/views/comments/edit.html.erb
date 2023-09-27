@@ -1,0 +1,21 @@
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Update Comment' %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', post_comment_path(@post, @comment) %> |
+<%= link_to 'Back', post_path(@post) %>

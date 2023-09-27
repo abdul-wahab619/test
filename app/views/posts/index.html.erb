@@ -1,0 +1,32 @@
+<h1><%= Post.count %></h1>
+<br />
+<%= link_to "New post", new_post_path %>
+<br >
+
+<div style="overflow-x:auto;">
+  <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-family:Arial, sans-serif;">
+    <thead>
+      <tr>
+        <th style="border:1px solid #000;">Id</th>
+        <th style="border:1px solid #000;">Title</th>
+        <th style="border:1px solid #000;">Body</th>
+        <th style="border:1px solid #000;">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td style="padding:10px; border:1px solid #000;"><%= post.id %></td>
+          <td style="padding:10px; border:1px solid #000;"><%= post.title %></td>
+          <td style="padding:10px; border:1px solid #000;"><%= post.body %></td>
+          <td style="padding:10px; border:1px solid #000;">
+                <%= link_to "Show", post %>
+                <%= link_to "Edit", edit_post_path(post) %>
+                <%= link_to "Delete", post_path(post), data:{ turbo_method: :turbo_delete} %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
